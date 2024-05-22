@@ -1,0 +1,1 @@
+python dynonet_baseline.py --benchmark_name CED 
