@@ -1,3 +1,39 @@
+# Use the following format to run the script from command line, replacing 'benchmark_name' and other default parameters as needed:
+# python dynonet_baseline.py --benchmark_name <benchmark_name> --<parameter> <value>
+# Example:
+# python dynonet_baseline.py --benchmark_name Silverbox --lr 0.001 --batch_size 16
+# This script configures and trains a dynoNet model on specified benchmarks, allowing the user to adjust training parameters dynamically.
+# 
+# Authors: Dario Piga, Marco Forgione, Lugano, 22nd May, 2024.
+#
+# Copyright (C) [2024] [Dario Piga, Marco Forgione]
+# 
+# This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License.
+# To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/ or send a letter to
+# Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+# 
+# You are free to:
+# - Share — copy and redistribute the material in any medium or format
+# - Adapt — remix, transform, and build upon the material
+# 
+# The licensor cannot revoke these freedoms as long as you follow the license terms.
+# 
+# Under the following terms:
+# - Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+#   You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+# - NonCommercial — You may not use the material for commercial purposes.
+# 
+# No additional restrictions — You may not apply legal terms or technological measures that legally restrict others
+# from doing anything the license permits.
+# 
+# Notices:
+# You do not have to comply with the license for elements of the material in the public domain or where your use is
+# permitted by an applicable exception or limitation.
+# 
+# No warranties are given. The license may not give you all of the permissions necessary for your intended use. For
+# example, other rights such as publicity, privacy, or moral rights may limit how you use the material.
+
+
 import argparse
 import torch
 import torch.nn as nn
@@ -12,9 +48,9 @@ from dynonet.lti import MimoLinearDynamicalOperator
 from dynonet.static import MimoStaticNonLinearity
 import os
 import copy
+import time
 
-
-default_benchmark = 'CED'
+default_benchmark = 'Silverbox'
 
 def parse_args():
     """
@@ -300,6 +336,9 @@ def print_and_plot(test_data, model_outputs):
     test_data (list-like): List containing the test datasets.
     model_outputs (list-like): List containing the model outputs.
     """
+    rmse_summary = []  # Initialize an empty list to store RMSE summary strings.
+
+
     for ind, test in enumerate(test_data):
         y_test = test.y
         y_model = model_outputs[ind]
@@ -311,8 +350,12 @@ def print_and_plot(test_data, model_outputs):
             r2 = R_squared(y_test[n:, output], y_model[n:, output])
             mae = MAE(y_test[n:, output], y_model[n:, output])
             fit = fit_index(y_test[n:, output], y_model[n:, output])
+            rmse_summary.append(rmse)
 
-            print(f'Test {ind}, Output {output}: RMSE: {rmse:.8f}')
+
+            # Print all metrics for each test and output.
+            print(f'Test {ind}, Output {output}: RMSE: {rmse:.8f}, R^2: {r2:.2f}, Fit Index: {fit:.2f}')
+
 
             if config['plot']:
                 plt.figure(figsize=(10, 4))
@@ -326,7 +369,9 @@ def print_and_plot(test_data, model_outputs):
                 plt.legend()
                 plt.show()
 
-
+    # Print the RMSE summary for all tests and outputs.
+    rmse_summary_str = ', '.join([f'{value:.8f}' for value in rmse_summary])
+    print("All RMSEs: ", rmse_summary_str)
 
 
 if __name__ == "__main__":
@@ -341,7 +386,9 @@ if __name__ == "__main__":
     train, test = config['command_load'](atleast_2d=True, always_return_tuples_of_datasets=True)
 
     # Train the model on the loaded and normalized training data.
+    start_time = time.time()
     dict_model = train_model(train)
+    train_time = time.time() - start_time
 
     # Initialize a list to store the output predictions from the model for each test dataset.
     y_test_model = []
@@ -366,3 +413,4 @@ if __name__ == "__main__":
 
     # After processing all test cases, display and plot the results.
     print_and_plot(test, y_test_model)
+    print(f'Training time: {train_time:.2f} s')
