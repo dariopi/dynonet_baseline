@@ -1,6 +1,6 @@
-# DynoNet Baseline Model for [nonlinear benchmarks](https://www.nonlinearbenchmark.org/)
+# dynoNet Baseline Model for [nonlinear benchmarks](https://www.nonlinearbenchmark.org/)
 
-The DynoNet Baseline Model project implements a machine learning model designed to simulate and predict the behavior of various dynamical systems. This project utilizes the dynoNet library to build, train, and evaluate models capable of handling nonlinear dynamics with a specific focus on real-world benchmarks like Silverbox, Wiener-Hammerstein systems, and others.
+The dynoNet Baseline Model project implements a machine learning model designed to simulate and predict the behavior of various dynamical systems. This project utilizes the dynoNet library to build, train, and evaluate models capable of handling nonlinear dynamics with a specific focus on real-world benchmarks like Silverbox, Wiener-Hammerstein systems, and others.
 
 ## Features
 
