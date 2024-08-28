@@ -26,8 +26,7 @@ def get_config(model_type, **kwargs):
     model_configs = {
         'Silverbox': {
             'save_path': 'checkpoints/silverbox_checkpoint.pth',  # Path to save the model checkpoint.
-            'command_load': nonlinear_benchmarks.Silverbox,  # Function to load Silverbox dataset.
-            'max_epochs': 10001
+            'command_load': nonlinear_benchmarks.Silverbox  # Function to load Silverbox dataset.
         },
         'WienerHammerBenchMark': {
             'save_path': 'checkpoints/wienerhammerstein_checkpoint.pth',  # Path for checkpoint.
