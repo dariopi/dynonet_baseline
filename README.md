@@ -15,23 +15,42 @@ The DynoNet Baseline Model project implements a machine learning model designed 
 
 Clone this repository and install the required dependencies:
 
-git clone https://github.com/dariopi/benchmarks_baseline.git
+git clone https://github.com/dariopi/dynonet_baseline.git
 
 cd name_of_the_folder
 
 pip install -r requirements.txt
+
+In our tests, we used Python 3.11.9
 
 ## Usage
 
 To run the training script, navigate to the project directory and execute:
 
 ```bash
-python dynonet_baseline.py --benchmark_name Silverbox --lr 0.001 --batch_size 16
+python dynonet_baseline.py --benchmark_name Silverbox
 ```
-In our tests, we used Python 3.11
+or 
 
-Replace 'Silverbox' with your desired benchmark and adjust other parameters such as the learning rate (--lr) and batch size (--batch_size)
-as needed to suit your training requirements.
+```bash
+python dynonet_baseline.py --benchmark_name EMPS
+```
+or
+
+```bash
+python dynonet_baseline.py --benchmark_name WienerHammerBenchMark
+```
+
+or
+
+```bash
+python dynonet_baseline.py --benchmark_name CED
+```
+or
+
+```bash
+python dynonet_baseline.py --benchmark_name Cascaded_Tanks
+```
 
 ## License
 
