@@ -15,7 +15,7 @@ The DynoNet Baseline Model project implements a machine learning model designed 
 
 Clone this repository and install the required dependencies:
 
-git clone https://github.com/yourusername/dynonet_baseline.git
+git clone https://github.com/dariopi/benchmarks_baseline.git
 cd dynonet_baseline
 pip install -r requirements.txt
 
