@@ -16,7 +16,9 @@ The DynoNet Baseline Model project implements a machine learning model designed 
 Clone this repository and install the required dependencies:
 
 git clone https://github.com/dariopi/benchmarks_baseline.git
-cd dynonet_baseline
+
+cd name_of_the_folder
+
 pip install -r requirements.txt
 
 ## Usage
@@ -26,6 +28,7 @@ To run the training script, navigate to the project directory and execute:
 ```bash
 python dynonet_baseline.py --benchmark_name Silverbox --lr 0.001 --batch_size 16
 ```
+In our tests, we used Python 3.11
 
 Replace 'Silverbox' with your desired benchmark and adjust other parameters such as the learning rate (--lr) and batch size (--batch_size)
 as needed to suit your training requirements.
@@ -38,5 +41,23 @@ This project is licensed under the Creative Commons Attribution-NonCommercial 4.
 
 - **Dario Piga** (dario.piga@idsia.ch)
 - **Marco Forgione** (marco.forgione@idsia.ch)
+
+## Citing
+
+If you find this project useful, we encourage you to cite the [paper](https://onlinelibrary.wiley.com/doi/abs/10.1002/acs.3216):
+
+
+```
+@article{forgione2021dyno,
+  title={\textit{dyno{N}et}: A neural network architecture for learning dynamical systems},
+  author={Forgione, M. and Piga, D.},
+  journal={International Journal of Adaptive Control and Signal Processing},
+  volume={35},
+  number={4},
+  pages={612--626},
+  year={2021},
+  publisher={Wiley}
+}
+```
 
 
