@@ -28,7 +28,7 @@ To run the training script, navigate to the project directory and execute:
 ```bash
 python dynonet_baseline.py --benchmark_name Silverbox --lr 0.001 --batch_size 16
 ```
-In our tests, we used Python 3.11
+In our tests, we used Python 3.11.9
 
 Replace 'Silverbox' with your desired benchmark and adjust other parameters such as the learning rate (--lr) and batch size (--batch_size)
 as needed to suit your training requirements.
