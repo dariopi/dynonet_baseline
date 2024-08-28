@@ -50,7 +50,7 @@ import os
 import copy
 import time
 
-default_benchmark = 'Silverbox'
+default_benchmark = 'CED'
 
 def parse_args():
     """
