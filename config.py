@@ -12,7 +12,7 @@ def get_config(model_type, **kwargs):
         'shuffle': True,  # Whether to shuffle the dataset each epoch.
         'n_skip': 20,  # Number of initial timesteps to skip in loss calculation.
         'print_frequency': 50,  # Frequency of epochs to print training progress.
-        'save_frequency': 1000,  # Frequency of epochs at which to save a checkpoint.
+        'save_frequency': 8000,  # Frequency of epochs at which to save a checkpoint.
         'hidden_size': 20,  # Size of the hidden layers in the dynonet model.
         'load': False,  # Flag to indicate whether to load a saved model.
         'simulate_train': False,  # Flag to simulate training data in predictions.
@@ -47,7 +47,8 @@ def get_config(model_type, **kwargs):
         'CED': {
             'save_path': 'checkpoints/ced_checkpoint.pth',
             'command_load': nonlinear_benchmarks.CED,
-            'simulate_train': True  # Simulate the train to have good initial conditions for the test.
+            'simulate_train': True,  # Simulate the train to have good initial conditions for the test.
+            'max_epochs': 10001
         }
     }
 

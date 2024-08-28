@@ -1,1 +1,5 @@
 python dynonet_baseline.py --benchmark_name CED 
+python dynonet_baseline.py --benchmark_name Silverbox
+python dynonet_baseline.py --benchmark_name WienerHammerBenchMark
+python dynonet_baseline.py --benchmark_name Cascaded_Tanks
+python dynonet_baseline.py --benchmark_name EMPS
